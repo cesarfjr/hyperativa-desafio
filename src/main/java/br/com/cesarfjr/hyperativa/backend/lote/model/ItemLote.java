@@ -2,6 +2,7 @@ package br.com.cesarfjr.hyperativa.backend.lote.model;
 
 import java.io.Serializable;
 
+import br.com.cesarfjr.hyperativa.backend.util.MascaraUtil;
 import lombok.Data;
 
 @Data
@@ -16,13 +17,9 @@ public class ItemLote implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "ItemLote(identificadorLinha=" + identificadorLinha + ", numeroRegistro=" + numeroRegistro + ", pan=" + mascaraPan(pan) + ")";
+		return "ItemLote(identificadorLinha=" + identificadorLinha + ", numeroRegistro=" + numeroRegistro + ", pan=" + MascaraUtil.mascaraPan(pan) + ")";
 	}
 
 
-	private String mascaraPan(String panParaMascarar) {
-		String bin = panParaMascarar.substring(0,6);
-		String ultimosDigitos = panParaMascarar.substring(panParaMascarar.length() - 4, panParaMascarar.length()); 
-		return bin + "*********" + ultimosDigitos;
-	}
+
 }

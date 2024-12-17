@@ -14,14 +14,14 @@ import br.com.cesarfjr.hyperativa.backend.lote.model.Lote;
 import br.com.cesarfjr.hyperativa.backend.lote.service.LoteFileParseService;
 
 @RestController
-@RequestMapping("/file")
+@RequestMapping("/lote")
 public class LoteController {
 
     @Autowired
     private LoteFileParseService loteFileParseService;
 
     @PostMapping
-    public ResponseEntity<Object> uploadFile(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<Object> cadastraLoteDeArquivo(@RequestParam("file") MultipartFile file) {
         if (file.isEmpty()) {
             return ResponseEntity.badRequest().body("File is empty. Please upload a valid .txt file.");
         }
