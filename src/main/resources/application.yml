@@ -17,7 +17,8 @@ spring:
   servlet.multipart:
     max-file-size: 10MB
     max-request-size: 10MB
-
+  jackson:
+    default-property-inclusion: NON_NULL
 app:
   security:
     aes-key: "Y2hhdmVleGVtcGxvY2hhdmVleGVtcGxvMDEyMzQ1Njc="

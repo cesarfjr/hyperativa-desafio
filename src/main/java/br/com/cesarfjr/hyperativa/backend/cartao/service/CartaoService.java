@@ -49,7 +49,7 @@ public class CartaoService {
 			return new CartaoResponseDTO("Cartao existe na base", "00", new CartaoDTO(optional.get().getId(), null));
 		}
 		
-		return new CartaoResponseDTO("Cartao nao existe na base", "99", new CartaoDTO(cartao.getId(),null));
+		return new CartaoResponseDTO("Cartao nao existe na base", "99", new CartaoDTO());
 	}
 	
 	
