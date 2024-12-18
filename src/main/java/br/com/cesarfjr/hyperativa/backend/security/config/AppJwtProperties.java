@@ -6,6 +6,7 @@ import javax.crypto.SecretKey;
 
 import org.hibernate.validator.constraints.time.DurationMin;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.annotation.Validated;
 
 import com.nimbusds.jose.JWSAlgorithm;
@@ -20,6 +21,7 @@ import lombok.Setter;
 @Setter
 @Validated
 @ConfigurationProperties(prefix = "app.jwt")
+@Configuration
 public class AppJwtProperties {
 
 	@NotNull

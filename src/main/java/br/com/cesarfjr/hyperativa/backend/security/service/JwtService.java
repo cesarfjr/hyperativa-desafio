@@ -1,9 +1,12 @@
 package br.com.cesarfjr.hyperativa.backend.security.service;
 
 import java.time.Instant;
+import java.util.Base64;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.nimbusds.jose.JOSEException;
@@ -13,16 +16,22 @@ import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 
 import br.com.cesarfjr.hyperativa.backend.security.config.AppJwtProperties;
-import lombok.RequiredArgsConstructor;
 
 @Component
-@RequiredArgsConstructor
 public class JwtService {
 
-    private final AppJwtProperties appJwtProperties;
+	// baseado na implementacao em:
+	// https://medium.com/@HereAndBeyond/spring-boot-3-jwt-authorization-based-on-a-secret-key-ababbb3a3350
+	
+	@Autowired
+    private AppJwtProperties appJwtProperties;
 
 
-    public String generateJWT(Map<String, Object> claims) {
+    public String generateJWT(String basicAuthHeader) {
+    	
+    	Map<String, Object> claims = generateClaims(basicAuthHeader);
+    	
+    	
         var key = appJwtProperties.getKey();
         var algorithm = appJwtProperties.getAlgorithm();
 
@@ -41,7 +50,23 @@ public class JwtService {
         return jwt.serialize();
     }
 
-    private JWTClaimsSet buildClaimsSet(Map<String, Object> claims) {
+    private Map<String, Object> generateClaims(String basicAuthHeader) {
+		String base64Credentials = basicAuthHeader.substring("Basic ".length());
+		String credentials = new String(Base64.getDecoder().decode(base64Credentials));
+		String[] values = credentials.split(":", 2);
+		String username = values[0];
+//		String password = values[1];
+    	
+		Map<String, Object> claims = new HashMap<>();
+		String[] scopeRoles = new String[] {"role1", "role2", "GUEST"};
+		
+		claims.put("sub", username);
+		claims.put("scope", scopeRoles);
+		
+		return claims;
+	}
+
+	private JWTClaimsSet buildClaimsSet(Map<String, Object> claims) {
         var issuer = appJwtProperties.getIssuer();
         var issuedAt = Instant.now();
         var expirationTime = issuedAt.plus(appJwtProperties.getExpiresIn());
