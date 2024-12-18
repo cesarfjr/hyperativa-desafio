@@ -14,7 +14,7 @@ import br.com.cesarfjr.hyperativa.backend.lote.model.Lote;
 import br.com.cesarfjr.hyperativa.backend.lote.service.LoteFileParseService;
 
 @RestController
-@RequestMapping("/lote")
+@RequestMapping("/cartoes/lotes")
 public class LoteController {
 
     @Autowired

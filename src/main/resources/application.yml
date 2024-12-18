@@ -1,7 +1,7 @@
 server:
   port: 9001
   servlet:
-    context-path: /cartoes
+    context-path: /desafio
 
 spring:
   application:
@@ -17,9 +17,16 @@ spring:
   servlet.multipart:
     max-file-size: 10MB
     max-request-size: 10MB
+
+app:
+  security:
+    aes-key: "Y2hhdmVleGVtcGxvY2hhdmVleGVtcGxvMDEyMzQ1Njc="
   
-logging.level:
-  root: INFO
-  '[br.com.cesarfjr]': DEBUG
-  org.springframework.security: TRACE
+logging:
+  file:
+    path: ./
+  level:
+    root: INFO
+    '[br.com.cesarfjr]': DEBUG
+    org.springframework.security: TRACE
   
