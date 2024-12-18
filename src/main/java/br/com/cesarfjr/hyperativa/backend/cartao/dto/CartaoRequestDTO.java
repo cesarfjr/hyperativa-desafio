@@ -2,7 +2,7 @@ package br.com.cesarfjr.hyperativa.backend.cartao.dto;
 
 import java.io.Serializable;
 
-import br.com.cesarfjr.hyperativa.backend.util.MascaraUtil;
+import br.com.cesarfjr.hyperativa.backend.cartao.util.MascaraUtil;
 import lombok.Data;
 
 @Data

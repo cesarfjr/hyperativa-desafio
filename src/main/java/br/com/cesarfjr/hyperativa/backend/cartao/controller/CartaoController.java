@@ -23,13 +23,13 @@ public class CartaoController {
 	
 	@PreAuthorize("hasAuthority('SCOPE_GUEST')")
 	@PostMapping
-	public ResponseEntity<Object> cadastraCartao(@RequestBody CartaoRequestDTO cartaoRequestDTO) {
+	public ResponseEntity<Object> cadastraCartao(@RequestBody CartaoRequestDTO cartaoRequestDTO) throws Exception {
 		return new ResponseEntity<Object>(cartaoService.salvaCartao(cartaoRequestDTO), HttpStatus.OK) ;
 	}
 	
 	@PreAuthorize("hasAuthority('SCOPE_GUEST')")
 	@GetMapping("/{pan}")
-	public ResponseEntity<Object> verificaCartao(@PathVariable("pan") String pan) {
+	public ResponseEntity<Object> verificaCartao(@PathVariable("pan") String pan) throws Exception {
 		return new ResponseEntity<Object>(cartaoService.verificaCartao(pan), HttpStatus.OK);
 	}
 	

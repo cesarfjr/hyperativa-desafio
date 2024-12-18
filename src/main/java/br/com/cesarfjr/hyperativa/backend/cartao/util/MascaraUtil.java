@@ -1,4 +1,4 @@
-package br.com.cesarfjr.hyperativa.backend.util;
+package br.com.cesarfjr.hyperativa.backend.cartao.util;
 
 public class MascaraUtil {
 
