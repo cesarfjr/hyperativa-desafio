@@ -31,7 +31,7 @@ app:
   
 logging:
   file:
-    path: ./
+    path: ${LOG_PATH:./}
   level:
     root: INFO
     '[br.com.cesarfjr]': DEBUG  

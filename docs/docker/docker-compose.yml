@@ -1,0 +1,9 @@
+services:
+  desafio:
+    image: "desafio:0.0.1-SNAPSHOT"
+    ports:
+      - "9001:9001"
+    volumes:
+      - /tmp:/opt/booter
+    environment:
+      - LOG_PATH=/opt/booter
