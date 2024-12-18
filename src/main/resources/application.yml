@@ -33,6 +33,4 @@ logging:
     path: ./
   level:
     root: INFO
-    '[br.com.cesarfjr]': DEBUG
-    org.springframework.security: TRACE
-  
+    '[br.com.cesarfjr]': DEBUG  

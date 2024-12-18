@@ -55,7 +55,6 @@ public class JwtService {
 		String credentials = new String(Base64.getDecoder().decode(base64Credentials));
 		String[] values = credentials.split(":", 2);
 		String username = values[0];
-//		String password = values[1];
     	
 		Map<String, Object> claims = new HashMap<>();
 		String[] scopeRoles = new String[] {"role1", "role2", "GUEST"};
