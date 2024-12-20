@@ -27,11 +27,17 @@ app:
     algorithm: HS256
     issuer: http://localhost:9001
     expiresIn: 60m
-    
-  
+
+logbook:
+  format:
+    style: json
+  filter:
+    enabled: true
+
 logging:
   file:
     path: ${LOG_PATH:./}
   level:
     root: INFO
     '[br.com.cesarfjr]': DEBUG  
+    '[org.zalando.logbook.Logbook]': TRACE
