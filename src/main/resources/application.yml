@@ -1,5 +1,5 @@
 server:
-  port: 9001
+  port: ${SERVER_PORT:9001}
   servlet:
     context-path: /desafio
 
@@ -7,10 +7,10 @@ spring:
   application:
     name: desafio-hyperativa-backend
   datasource:
-    driver-class-name: org.hsqldb.jdbc.JDBCDriver
-    url: jdbc:hsqldb:mem:testdb;DB_CLOSE_DELAY=-1
-    username: sa
-    password: 
+    driver-class-name: ${DATASOURCE_DRIVER:org.hsqldb.jdbc.JDBCDriver}
+    url: ${DATASOURCE_URL:jdbc:hsqldb:mem:testdb;DB_CLOSE_DELAY=-1}
+    username: ${DATASOURCE_USERNAME:sa}
+    password: ${DATASOURCE_PASSWORD}
   jpa:
     hibernate.ddl-auto: create
     open-in-view: true 
@@ -38,6 +38,6 @@ logging:
   file:
     path: ${LOG_PATH:./}
   level:
-    root: INFO
+    root: WARN
     '[br.com.cesarfjr]': DEBUG  
     '[org.zalando.logbook.Logbook]': TRACE
