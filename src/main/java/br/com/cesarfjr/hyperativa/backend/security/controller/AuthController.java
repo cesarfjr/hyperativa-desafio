@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.cesarfjr.hyperativa.backend.security.dto.AuthResponseDTO;
 import br.com.cesarfjr.hyperativa.backend.security.service.BasicAuthService;
 import br.com.cesarfjr.hyperativa.backend.security.service.JwtService;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +28,7 @@ public class AuthController {
     public ResponseEntity<Object> getToken(@RequestHeader(name = "Authorization", required = false) String authHeader) {
     	
     	if(basicAuthService.isValidUser(authHeader)) {
-    		return new ResponseEntity<Object>(jwtService.generateJWT(authHeader), HttpStatus.OK);
+    		return new ResponseEntity<Object>(new AuthResponseDTO(jwtService.generateJWT(authHeader)), HttpStatus.OK);
     	}
 		return new ResponseEntity<Object>(HttpStatus.UNAUTHORIZED);
     }

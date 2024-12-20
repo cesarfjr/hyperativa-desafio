@@ -7,3 +7,7 @@ services:
       - /tmp:/opt/booter
     environment:
       - LOG_PATH=/opt/booter
+#      - DATASOURCE_DRIVER=com.mysql.cj.jdbc.Driver
+#      - DATASOURCE_URL=jdbc:mysql://localhost:3306/mydatabase 
+#      - DATASOURCE_USERNAME=myuser
+#      - DATASOURCE_PASSWORD=mypassword
