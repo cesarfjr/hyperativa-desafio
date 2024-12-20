@@ -59,12 +59,14 @@ Obs.: para audits utilizei o framework de logs Logbook, configurado para mascara
 - Para otimização aos acessos do BD, optei por utilizar o tomcat-jdbc no lugar do hikariCP (padrão do spring-boot) por ter tido melhores resultados de performance em situações de alta demanda na minha experiêndia profissional. 
 
 ## TODO
+
 - Configurar as propriedades de pool do banco de acordo com a performance esperada para um dado volume esperado transacional.
 - Gerar certificado para o servidor, incluir em uma keystore e configurar na aplicação para que todas as comunicações sejam seguras com TLS.
 - Validação dos dados na chegada das requests (BeanValidator e/ou validação manual)
 - Testes unitários de todas as classes não POJO
 - Criação de índice sobre as colunas *pan* e *bin* da tabela *Cartao* para otimizar consultas.
-
+- Criação dos scripts sql para criação do schema (no momento aplicação está configurada para criar automaticamente a partir do scan das Entities).
+- Chaves e senhas configuradas no arquivo application.yml e/ou no docker-compose.yml serem criptografadas e abertas em tempo de execução na subida da aplicação.
 
 ## API
 
